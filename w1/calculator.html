@@ -1,0 +1,43 @@
+<!doctype html>
+<script src="https://en.js.cx/test/libs.js"></script>
+<script src="test.js"></script>
+<script>
+
+  let Calculator = {
+    
+    a:"null",
+    b:"null",
+
+    read(){
+        this.a = parseInt(prompt("Type the 1st number:", 0));
+        this.b = parseInt(prompt("Type the 2nd number:", 0));
+    },
+
+    sum(){
+        let res = this.a + this.b;
+        alert(`addition: ${res}`);
+    },
+
+    mul(){
+        let res = this.a * this.b;
+        alert(`multiplication: ${res}`);
+    },
+
+    div(){
+        alert(`division: ${this.a/this.b}`);
+    },
+
+    sub(){
+        alert(`subtraction: ${this.a-this.b}`);
+    }
+  }
+
+  Calculator.read();
+  Calculator.sum();
+  Calculator.sub();
+  Calculator.mul();
+  Calculator.div();
+
+</script>
+
+</html>
