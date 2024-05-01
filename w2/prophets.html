@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Heitor Chaves Cazado">
+    <meta name="description" content="This page was created to practice week's course content about template and JS.">
+    <script defer src="scripts/prophets.js"></script>
+    <link rel="stylesheet" href="styles/prophets.css">
+    <title>Template practice - Prophets</title>
+</head>
+<body>
+
+    <header>
+        <h1>LDS Prophets</h1>
+    </header>
+
+    <main>
+        <div id="prophetsContainer">
+            <!--Container for holding prophets template cards-->
+        </div>
+
+
+    </main>
+
+    <footer>
+        <h3>BYU-I WDD-330</h3>
+        <p>Student: Heitor Cazado</p>
+    </footer>
+
+    <template id="prophet-card">
+        <section id="card">
+            <h2>Name: <span id="h2"></span></h2>
+            <p>Birth Date: <span id="dob"></span></p>
+            <p>Birth Place: <span id="birthPlace"></span></p>
+            <img id="img" loading="lazy" class="profile" src="" alt="prophet name placeholder" width="220px" height="300px">
+        </section>
+    </template>
+</body>
+</html>

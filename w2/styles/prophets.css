@@ -1,0 +1,25 @@
+body{
+    text-align: center;
+}
+
+#prophetsContainer{
+    background-color: blanchedalmond;
+    margin: 1rem auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    width:90%;
+}
+
+#card{
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    background-color: beige;
+    box-shadow: #ccc 0 5px 5px 5px;
+    padding: .5rem;
+}
+
+#card img{
+    object-fit: contain;
+}
