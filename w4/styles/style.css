@@ -1,0 +1,38 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: wheat;
+}
+
+.box{
+    background-color: rgb(221, 238, 245);
+    border: 1px solid #000;
+    color: block;
+    width: 120px;
+    height: 120px;
+    animation: myanima 4s infinite;
+}
+
+@keyframes myanima {
+    0%{
+        transform: translateY(0);
+        background-color: rgba(170, 187, 238, .3);
+    }
+    50%{
+        transform: translateX(100px) translateY(-150px);
+        background-color: rgba(34, 68, 170, .3);
+        color: #fff;
+    }
+    75%{
+        transform: translateX(-100px) translateY(-150px);
+        background-color: rgba(85, 119, 221, .3);
+    }
+    100%{
+        transform: translateX(0) translateY(0);
+        background-color: rgba(170, 187, 238, .3);
+        
+    }
+}
