@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Heitor Chaves Cazado">
+    <meta name="description" content="Implementing W5 content from WDD330, JS APIs">
+    <title>JS API - Geolocation</title>
+</head>
+
+<body>
+    <h1>JS Geolocation</h1>
+    <button onClick="getLocation()">Get Location</button>
+    <p id="output"></p>
+
+    <script>
+        const output = document.getElementById("output");
+        let url = "";
+
+        function getLocation() {
+            try {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } catch {
+                output.innerHTML = err;
+            }
+        }
+        function showPosition(position) {
+            const lat = position.coords.latitude;
+            const long = position.coords.longitude;
+
+
+            output.innerHTML = "Latitude: " + lat + "<br>Longitude: "
+                + long;
+        }
+    </script>
+</body>
+
+</html>

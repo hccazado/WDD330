@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Heitor Chaves Cazado">
+    <meta name="description" content="Implementing W5 content from WDD330, <canvas> element">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Canvas Element</title>
+</head>
+
+<body>
+    <h1>W5, canva Elements</h1>
+    <canvas id="tutorial" width="150" height="150"></canvas>
+    <button id="btn-face" onclick="changeFace()">Chage face!</button>
+    <canvas id="canvas" width="150" height="150"></canvas>
+
+    <script>
+        let face = "happyFace";
+
+        function draw() {
+            const canvas = document.getElementById("tutorial");
+            if (canvas.getContext) {
+                const ctx = canvas.getContext("2d");
+
+                ctx.fillStyle = "rgb(200 0 0)";
+                ctx.fillRect(10, 10, 50, 50);
+
+                ctx.fillStyle = "rgb(0 0 200 / 50%)";
+                ctx.fillRect(30, 30, 50, 50);
+            }
+        }
+
+        function setCanva() {
+            canva = happyFace();
+            face = "happyFace";
+            btn.innerText = "Change to frowny face";
+        }
+
+        function changeFace() {
+
+            const canvas = document.getElementById("canvas");
+            const context = canvas.getContext("2d");
+
+            const btnFace = document.getElementById("btn-face");
+
+            if (face == "happyFace") {
+                context.clearRect(0, 0, canvas.width, canvas.height)
+                frownyFace(context);
+                btnFace.innerText = "Change to happy face";
+                face = "frownyFace";
+            }
+            else {
+                context.clearRect(0, 0, canvas.width, canvas.height)
+                happyFace(context);
+                btnFace.innerText = "Change to frowny face";
+                face = "happyFace";
+            }
+        }
+
+        const happyFace = (ctx) => {
+            ctx.beginPath();
+            ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+            ctx.moveTo(110, 75);
+            ctx.arc(75, 75, 35, 0, Math.PI, false); // Mouth (clockwise)
+            ctx.moveTo(65, 65);
+            ctx.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
+            ctx.moveTo(95, 65);
+            ctx.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
+            ctx.stroke();
+        }
+
+        const frownyFace = (ctx) => {
+            ctx.beginPath();
+            ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+            ctx.moveTo(110, 75);
+            ctx.arc(75, 70, 35, 0, Math.PI, true); // Mouth (clockwise)
+            ctx.moveTo(65, 65);
+            ctx.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
+            ctx.moveTo(95, 65);
+            ctx.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
+            ctx.stroke();
+        }
+        window.addEventListener("load", () => {
+            draw();
+
+        });
+    </script>
+</body>
+
+</html>
