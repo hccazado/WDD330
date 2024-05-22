@@ -1,0 +1,21 @@
+:root{
+ --primary-color: #2c2c34; /*body background*/
+ --primary-accent: #D8D8F6; /*titles*/
+ --secondary-color: #494850; /*cards background*/
+ --secondary-accent: #B18FCF;
+ --complement-color: #978897;   
+}
+
+body{
+    background-color: var(--primary-color);
+    color: var(--primary-accent);
+}
+
+header{
+    height: 80px;
+    width: 100vw;
+}
+
+header img{
+    width: 120px;
+}
