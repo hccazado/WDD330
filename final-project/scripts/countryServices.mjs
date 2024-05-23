@@ -1,14 +1,5 @@
 import { getCountryServices } from "./DAOServices.mjs";
 
-const template = (service) =>{
-    return `<a target="_blank" href="${service.homePage}">
-        <div class="service-card">
-            <img src="${service.imageSet.darkThemeImage}" alt="logo from ${service.name}">
-            <h3>${service.name}</h3>
-        </div>
-    </a>`;
-}
-
 export class CountryServices{
     constructor(countryCode, container){
         this.countryCode = countryCode;
@@ -28,4 +19,13 @@ export class CountryServices{
             this.container.insertAdjacentHTML("afterbegin", template(service));
         })
     }
+}
+
+const template = (service) =>{
+    return `<a target="_blank" href="${service.homePage}">
+        <div class="service-card">
+            <img src="${service.imageSet.darkThemeImage}" alt="logo from ${service.name}">
+            <h3>${service.name}</h3>
+        </div>
+    </a>`;
 }

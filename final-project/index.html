@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/larger.css">
-    <script src="scripts/app.js" type="module"></script>
+    <script src="scripts/app.js" type="module" defer></script>
     <script src="scripts/menu.js" defer></script>
     <title>Whoscasting | Home</title>
 </head>
@@ -25,19 +25,103 @@
         <h1>Whoscasting</h1>
     </a>
     <div id="btn-menu" class="show"></div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Favorites</a></li>
-            <li><a href="#">LogIn | Sign in</a></li>
-        </ul>
-    </nav>
-    <div class="search">
+</header>
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Favorites</a></li>
+        <li><a href="#">LogIn | Sign in</a></li>
+    </ul>
+</nav>
+<div class="search">
+    <label for="search-options">Search options:</label>
+    <select id="search-options" name="search-options">
+        <option disabled selected>Select an option</option>
+        <option value="streamings">Avaliable services in Country</option>
+        <option value="title">Shows by title</option>
+        <option value="imdbId">Show by IMDB ID</option>
+        <option value="filter">Filter options</option>
+    </select>
+
+    <label for="countries">Country</label>
+    <select id="countries" name="countries">
+        <option disabled selected value=null>Select a country</option>
+        <option value="AR">Argentina</option>
+        <option value="AU">Australia</option>
+        <option value="AT">Austria</option>
+        <option value="AZ">Azerbaijan</option>
+        <option value="BE">Belgium</option>
+        <option value="BR">Brazil</option>
+        <option value="BG">Bulgaria</option>
+        <option value="CA">Canada</option>
+        <option value="CL">Chile</option>
+        <option value="CO">Colombia</option>
+        <option value="HR">Croatia</option>
+        <option value="CY">Cyprus</option>
+        <option value="CZ">Czech Republic</option>
+        <option value="DK">Denmark</option>
+        <option value="EC">Ecuador</option>
+        <option value="EE">Estonia</option>
+        <option value="FI">Finland</option>
+        <option value="FR">France</option>
+        <option value="DE">Germany</option>
+        <option value="GR">Greece</option>
+        <option value="HK">Hong Kong</option>
+        <option value="HU">Hungary</option>
+        <option value="IS">Iceland</option>
+        <option value="IN">India</option>
+        <option value="ID">Indonesia</option>
+        <option value="IE">Ireland</option>
+        <option value="IL">Israel</option>
+        <option value="IT">Italy</option>
+        <option value="JP">Japan</option>
+        <option value="LT">Lithuania</option>
+        <option value="MY">Malaysia</option>
+        <option value="MX">Mexico</option>
+        <option value="MD">Moldova</option>
+        <option value="NL">Netherlands</option>
+        <option value="NZ">New Zealand</option>
+        <option value="MK">North Macedonia</option>
+        <option value="NO">Norway</option>
+        <option value="PA">Panama</option>
+        <option value="PE">Peru</option>
+        <option value="PH">Philippines</option>
+        <option value="PL">Poland</option>
+        <option value="PT">Portugal</option>
+        <option value="RO">Romania</option>
+        <option value="RU">Russia</option>
+        <option value="RS">Serbia</option>
+        <option value="SG">Singapore</option>
+        <option value="SI">Slovenia</option>
+        <option value="ZA">South Africa</option>
+        <option value="KR">South Korea</option>
+        <option value="ES">Spain</option>
+        <option value="SE">Sweden</option>
+        <option value="CH">Switzerland</option>
+        <option value="TH">Thailand</option>
+        <option value="TR">Turkey</option>
+        <option value="UA">Ukraine</option>
+        <option value="AE">United Emirates</option>
+        <option value="GB">United Kingdom</option>
+        <option value="US">United States</option>
+        <option value="VN">Vietnam</option>
+    </select>
+
+    <div class="search-title hide">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="Star Wars">
+    </div>
+    <div class="search-imdb hide">
+        <label for="imdbId">IMDB ID</label>
+        <input type="text" id="imdb" name="imdb" placeholder="tt1375666">
 
     </div>
-    <div id="results-container">
-    </div>
+    <button id="btn-search" disabled>Search</button>
+</div>
+
+<div id="results-container">
+</div>
+
 <body>
     <footer>
         <p>Final project for BYU-I WDD330.</p>

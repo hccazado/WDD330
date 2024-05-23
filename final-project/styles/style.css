@@ -85,13 +85,17 @@ nav a:hover{
     display: block;
 }
 
+.hide{
+    display: none;
+}
+
 /*-------------------------*/
 
 /*------body container----*/
 #results-container{
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    gap: 1.5rem;
     align-items: center;
     width: 100%;
     overflow-y: visible;
@@ -125,7 +129,6 @@ nav a:hover{
     color: var(--primary-accent);
     padding: .5rem;
     text-align: center;
-    width: 100%;
 }
 .service-card img{
     width: 100%;
@@ -136,9 +139,11 @@ nav a:hover{
     text-decoration: none;
     color: inherit;
     padding-bottom: .5rem;
+    height: 250px;
+    width: 90%;
 }
 .service-card h3{
-    font-size: 1.1rem;
+    font-size: 2rem;
     margin-top: .5rem;
 }
 .service-card:hover img{
@@ -148,12 +153,38 @@ nav a:hover{
     color: var(--secondary-accent);
     text-decoration: underline;
     text-decoration-color: var(--secondary-accent);
+    box-shadow: 0 0px 5px 5px var(--complement-color);
+    transition: all .2s linear;
 }
-
 .favorite{
     position: absolute;
     bottom: .5rem;
     right: .5rem;
+}
+.search{
+    width: 100%;
+}
+.search label{
+    display: block;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.search input,
+.search select,
+.search button{
+    width: 100%;
+    height: 42px;
+}
+
+.search button{
+    border: none;
+    margin-top: 1.5rem;
+    background-color: var(--secondary-accent);
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+.search button:enabled{
+    background-color: var(--primary-accent);
 }
 
 /*-------------------------*/

@@ -22,6 +22,27 @@
         width: 100%;
         flex-wrap: wrap;
         justify-content: center;
+    }
 
+    #results-container a{
+        width: 250px;
+        height: 250px;
+        margin: .5rem;
+    }
+
+    #results-container h3{
+        font-size: 1.2rem;
+    }
+
+    .search{
+        width: 400px;
+        margin: 2rem auto;
+    }
+    .search label{
+        font-size: 1.2rem;
+    }
+    .search button:enabled:hover{
+        box-shadow: 0 0px 5px 5px var(--primary-accent);
+        
     }
 }

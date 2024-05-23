@@ -15,6 +15,12 @@ export async function getCountryServices(country){
     return services.services;
 }
 
+export async function getShowById(type, id){
+    const query = `shows/${type}/${id}?series_granularity=episode`;
+    const services = await fetchData(query);
+    return services;
+}
+
 async function fetchData(params){
     try{
         const response = await fetch(`${api}${params}?output_language=en`, options);
