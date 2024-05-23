@@ -15,16 +15,34 @@
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/style.css">
-    <script src="scripts/app.js" defer></script>
+    <link rel="stylesheet" href="styles/larger.css">
+    <script src="scripts/app.js" type="module"></script>
+    <script src="scripts/menu.js" defer></script>
     <title>Whoscasting | Home</title>
 </head>
-
-<body>
-    <header>
-        <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" src="images/logo-white.svg" alt="Whoscasting logo">
-        </a>
+<header>
+    <a href="index.html">
+        <h1>Whoscasting</h1>
+    </a>
+    <div id="btn-menu" class="show"></div>
     </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Favorites</a></li>
+            <li><a href="#">LogIn | Sign in</a></li>
+        </ul>
+    </nav>
+    <div class="search">
+
+    </div>
+    <div id="results-container">
+    </div>
+<body>
+    <footer>
+        <p>Final project for BYU-I WDD330.</p>
+        <p>Student: Heitor Chaves Cazado</p>
+    </footer>
 </body>
 
 </html>
