@@ -102,24 +102,24 @@ nav a:hover{
     margin: 2rem 0;
 }
 
-.card{
-    width: 330px;
-    height: 370px;
+.show-card{
+    width: 260px;
+    height: 400px;
     background-color: var(--secondary-color);
     color: var(--secondary-accent);
 }
 
-.card img{
-    height: 200px;
+.show-card img{
+    height: 260px;
     width: 100%;
-    object-fit: cover;
+    object-fit: fit;
 }
 
-.card h3{
+.show-card h3{
     font-size: 1.2rem;
     text-align: center;
 }
-.card p{
+.show-card p{
     font-size: 1rem;
     text-align: left;
 }
@@ -133,13 +133,13 @@ nav a:hover{
 .service-card img{
     width: 100%;
     height: 200px;
-    object-fit: fit;
+    object-fit:cover;
 }
 #results-container a{
     text-decoration: none;
     color: inherit;
     padding-bottom: .5rem;
-    height: 250px;
+    height: 300px;
     width: 90%;
 }
 .service-card h3{
@@ -152,6 +152,12 @@ nav a:hover{
 .service-card:hover {
     color: var(--secondary-accent);
     text-decoration: underline;
+    text-decoration-color: var(--secondary-accent);
+    box-shadow: 0 0px 5px 5px var(--complement-color);
+    transition: all .2s linear;
+}
+.show-card:hover{
+    color: var(--secondary-accent);
     text-decoration-color: var(--secondary-accent);
     box-shadow: 0 0px 5px 5px var(--complement-color);
     transition: all .2s linear;

@@ -12,10 +12,8 @@ export class CountryServices{
     }
 
     renderServices(){
-        console.log(this.services);
         this.container.innerHTML = "";
         this.services.forEach((service) =>{
-            console.log(template(service));
             this.container.insertAdjacentHTML("afterbegin", template(service));
         })
     }

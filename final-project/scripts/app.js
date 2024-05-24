@@ -41,16 +41,22 @@ function optionSelection(event){
 function handleSearch(e){
     const option = searchOptions.value;
     const country = countrySelect.value;
-    
+
     if (option == "streamings"){
         const countryServices = new CountryServices(country, resultsContainer);
         countryServices.init();
+    }
+    else if(option == "imdbId" || option == "title"){
+        let imdb = document.querySelector("#imdb").value;
+        let title = document.querySelector("#title").value;
+        const shows = new Show(imdb, title, "show", country, option, resultsContainer);
+        shows.init();  
     }
 }
 
 
 
-const shows = new Show();
+
 
 
 //countryServices.init();
