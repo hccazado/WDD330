@@ -53,10 +53,3 @@ function handleSearch(e){
         shows.init();  
     }
 }
-
-
-
-
-
-
-//countryServices.init();

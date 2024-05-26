@@ -1,4 +1,5 @@
 import { getShowById, getShowsByTitle } from "./DAOServices.mjs";
+import { addToFavorites } from "./favorites.mjs";
 
 export class Show{
     constructor(id = null, title = null, type = "show", country, searchOption, container){
@@ -32,7 +33,28 @@ export class Show{
                 this.container.insertAdjacentHTML("afterbegin", template(show));
             })
         }
+        setFavoriteEventListener();
     }
+}
+
+export function getGenres(genres){
+    let text = "";
+    genres.forEach(genre=>{
+        text += genre.name + "; ";
+    });
+    return text;
+}
+
+function handleAddFavorite(e){
+    const imdbId = e.target.id;
+    addToFavorites(imdbId);
+}
+
+function setFavoriteEventListener(){
+    const showsList = document.querySelectorAll(".show-card");
+    showsList.forEach(show =>{
+        show.lastElementChild.addEventListener("click", handleAddFavorite);
+    });
 }
 
 const template = (show) =>{
@@ -40,5 +62,7 @@ const template = (show) =>{
             <img src="${show.imageSet.verticalPoster.w360}" alt="poster from ${show.originalTitle}">
             <h3>${show.originalTitle}</h3>
             <p>IMDB: ${show.imdbId}</p>
+            <p>Genres: ${getGenres(show.genres)}</p>
+            <div id="${show.imdbId}" class="btn-favorite"></div>
         </div>`;
 }

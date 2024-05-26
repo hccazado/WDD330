@@ -2,8 +2,6 @@ const streamingAvailability = window.streamingAvailability;
 
 const api = 'https://streaming-availability.p.rapidapi.com/';
 
-console.log(streamingAvailability);
-
 /*const options = {
     method: "GET",
     headers:{
