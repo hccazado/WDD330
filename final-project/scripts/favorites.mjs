@@ -13,16 +13,20 @@ export async function addToFavorites(imdb){
     }else{
         let exist = false;
         favoritesList.forEach(item =>{
-            if(item.imdb == favorite.imdb){
+            if(item.imdbId == favorite.imdbId){
                 exist = true;
             }
         });
-        if(exist == false){
+        if(exist){
+            displayAlert ("Already a favorite!");
+        }
+        else{
             favoritesList.push(favorite);
+            displayAlert ("Added to your favorites!");
         }
     }
     setStorage("favorites", favoritesList);
-    displayAlert ("added to your favorites!");
+    
 }
 
 export function getFavorites(){
@@ -32,7 +36,7 @@ export function getFavorites(){
 async function favoriteData(imdbId){
     const show = await getShowById(imdbId);
     const favoriteData = {
-        imdb: show.imdbId,
+        imdbId: show.imdbId,
         title: show.originalTitle,
         genres: getGenres(show.genres),
         poster: show.imageSet.verticalPoster.w360,
@@ -73,7 +77,8 @@ function setHandleCheckFavorite(){
 function deleteFavorite(e){
     const id = getImdbIdSubstring(e.target.id);
     const favoriteList = getFavorites();
-    const newFavorites = favoriteList.filter(favorite=>favorite.imdb !== id);
+    const newFavorites = favoriteList.filter(favorite=>favorite.imdbId != id);
+    displayAlert ("Removed from your favorites!");
     setStorage("favorites", newFavorites);
     displayFavorites(resultContainer);
 }
@@ -82,10 +87,11 @@ function checkFavorite(e){
     const id = getImdbIdSubstring(e.target.id);
     const favoriteList = getFavorites();
     favoriteList.forEach(favorite =>{
-        if (favorite.imdb == id){
-            favorite.checked = true;
+        if (favorite.imdbId == id){
+            favorite.checked ? favorite.checked = false : favorite.checked = true;
         }
     });
+    displayAlert ("Changed status from your favorite show!");
     setStorage("favorites", favoriteList);
     displayFavorites(resultContainer);
 }
@@ -102,7 +108,7 @@ const template = (show) =>{
             <h3>${show.title}</h3>
             <p>IMDB: ${show.imdbId}</p>
             <p>Genres: ${show.genres}</p>
-            <div id="remove-${show.imdb}" class="btn-remove"></div>
-            <div id="check-${show.imdb}" class="btn-check ${getChecked(show.checked)}"></div
+            <div id="remove-${show.imdbId}" class="btn-remove"></div>
+            <div id="check-${show.imdbId}" class="btn-check ${getChecked(show.checked)}"></div
         </div>`;
 }

@@ -178,6 +178,11 @@ nav a:hover{
     text-align: left;
     font-weight: 600;
 }
+.show-card div{
+    font-size: 1.3rem;
+    text-align: left;
+    font-weight: 400;
+}
 .btn-favorite{
     font-size: 2.5rem;
     position: absolute;
@@ -185,12 +190,12 @@ nav a:hover{
     right: 1rem;
 }
 
-.btn-favorite::before{
+.btn-favorite::after{
     content: "☆";
     color: #fff;
 }
 
-.btn-favorite.set::before{
+.btn-favorite.isFavorite::after{
     content: "⭐";
 }
 

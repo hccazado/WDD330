@@ -6,6 +6,6 @@ export function displayAlert(message){
     alertElement.style.display = "block";
     setTimeout(()=>{
         alertElement.style.display = "none";
-    },4000);
+    },3000);
 }
 

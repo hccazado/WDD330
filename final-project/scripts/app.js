@@ -46,7 +46,7 @@ function optionSelection(event){
     }
 }
 
-function handleSearch(e){
+function handleSearch(){
     const option = searchOptions.value;
     const country = countrySelect.value;
 

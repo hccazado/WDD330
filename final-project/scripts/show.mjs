@@ -1,5 +1,6 @@
 import { getShowById, getShowsByTitle } from "./DAOServices.mjs";
 import { addToFavorites } from "./favorites.mjs";
+import { getStorage } from "./storage.mjs";
 
 export class Show{
     constructor(id = null, title = null, type = "show", country, searchOption, container){
@@ -14,22 +15,23 @@ export class Show{
     async init(){
         if(this.searchOption == "imdbId"){
             console.log("show by id: "+this.id);
-            this.shows = await getShowById(this.id); 
+            this.list = await getShowById(this.id); 
             this.renderShows();
         }
         else{
             console.log("show by title: "+this.title);
-            this.shows = await getShowsByTitle(this.country, this.title);
+            this.list = await getShowsByTitle(this.country, this.title);
             this.renderShows();
         }
     }
+
     renderShows(){
         this.container.innerHTML = "";
         if(this.searchOption == "imdbId"){
-            this.container.insertAdjacentHTML("afterbegin", template(this.shows));
+            this.container.insertAdjacentHTML("afterbegin", template(show));
         }
         else{
-            this.shows.forEach(show =>{
+            this.list.forEach(show =>{
                 this.container.insertAdjacentHTML("afterbegin", template(show));
             })
         }
@@ -38,16 +40,33 @@ export class Show{
 }
 
 export function getGenres(genres){
-    let text = "";
+    let genresString = "";
     genres.forEach(genre=>{
-        text += genre.name + "; ";
+        genresString += genre.name + "; ";
     });
-    return text;
+    return genresString;
 }
 
 function handleAddFavorite(e){
     const imdbId = e.target.id;
     addToFavorites(imdbId);
+    e.target.classList.add("isFavorite");
+}
+
+function checkFavorite(imdbId){
+    const favoritesList = getStorage("favorites");
+    let isFavorite = false;
+    favoritesList.forEach(favorite=>{
+        if(favorite.imdbId == imdbId){
+            isFavorite = true;
+        }
+    });
+    if(isFavorite){
+        return "isFavorite";
+    }
+    else{
+        return "";
+    }
 }
 
 function setFavoriteEventListener(){
@@ -63,6 +82,6 @@ const template = (show) =>{
             <h3>${show.originalTitle}</h3>
             <p>IMDB: ${show.imdbId}</p>
             <p>Genres: ${getGenres(show.genres)}</p>
-            <div id="${show.imdbId}" class="btn-favorite"></div>
+            <div id="${show.imdbId}" class="btn-favorite ${checkFavorite(show.imdbId)}">Favorite: </div>
         </div>`;
 }
