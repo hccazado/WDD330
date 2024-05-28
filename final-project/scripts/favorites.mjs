@@ -1,11 +1,13 @@
 import { setStorage, getStorage } from "./storage.mjs";
 import { getShowById } from "./DAOServices.mjs";
 import { getGenres } from "./show.mjs";
+import { displayAlert } from "./alert.mjs";
+
+const resultContainer = document.querySelector("#results-container");
 
 export async function addToFavorites(imdb){
     const favorite = await favoriteData(imdb);
     const favoritesList = getFavorites();
-    console.log(favoritesList);
     if(favoritesList.length == 0){
         favoritesList.push(favorite);
     }else{
@@ -20,6 +22,7 @@ export async function addToFavorites(imdb){
         }
     }
     setStorage("favorites", favoritesList);
+    displayAlert ("added to your favorites!");
 }
 
 export function getFavorites(){
@@ -36,4 +39,70 @@ async function favoriteData(imdbId){
         checked: false
     }
     return favoriteData;
+}
+
+export function displayFavorites(container){
+    const favList = getStorage("favorites");
+    container.innerHTML = "";
+    favList.forEach(favorite =>{
+        container.insertAdjacentHTML("beforeend",template(favorite));
+    });
+    setHandleDeleteFavorite();
+    setHandleCheckFavorite();
+}
+
+function getImdbIdSubstring(substring){
+    let values = String(substring).split("-");
+    return values[1];
+}
+
+function setHandleDeleteFavorite(){
+    const favorites = document.querySelectorAll(".favorite-card");
+    favorites.forEach(favorite =>{
+        favorite.lastElementChild.previousElementSibling.addEventListener("click", deleteFavorite);
+    });
+}
+
+function setHandleCheckFavorite(){
+    const favorites = document.querySelectorAll(".favorite-card");
+    favorites.forEach(favorite =>{
+        favorite.lastElementChild.addEventListener("click", checkFavorite);
+    });
+}
+
+function deleteFavorite(e){
+    const id = getImdbIdSubstring(e.target.id);
+    const favoriteList = getFavorites();
+    const newFavorites = favoriteList.filter(favorite=>favorite.imdb !== id);
+    setStorage("favorites", newFavorites);
+    displayFavorites(resultContainer);
+}
+
+function checkFavorite(e){
+    const id = getImdbIdSubstring(e.target.id);
+    const favoriteList = getFavorites();
+    favoriteList.forEach(favorite =>{
+        if (favorite.imdb == id){
+            favorite.checked = true;
+        }
+    });
+    setStorage("favorites", favoriteList);
+    displayFavorites(resultContainer);
+}
+
+function getChecked(checked){
+    if(checked){
+        return "checked";
+    }
+}
+
+const template = (show) =>{
+    return `<div class="favorite-card">
+            <img src="${show.poster}" alt="poster from ${show.title}">
+            <h3>${show.title}</h3>
+            <p>IMDB: ${show.imdbId}</p>
+            <p>Genres: ${show.genres}</p>
+            <div id="remove-${show.imdb}" class="btn-remove"></div>
+            <div id="check-${show.imdb}" class="btn-check ${getChecked(show.checked)}"></div
+        </div>`;
 }
