@@ -45,4 +45,33 @@
         box-shadow: 0 0px 5px 5px var(--primary-accent);
         
     }
+    .show-card{
+        width: 260px;
+        height: 600px;
+        background-color: var(--secondary-color);
+        color: var(--secondary-accent);
+        position: relative;
+        padding: 1rem;
+    }
+    .show-card p,
+    .favorite-card p{
+        font-weight: 400;
+        font-size: 1.2rem;
+    }
+    .btn-favorite{
+        font-size: 2rem;
+    }
+    .favorite-card{
+        width: 260px;
+        height: 600px;
+        background-color: var(--secondary-color);
+        color: var(--secondary-accent);
+        position: relative;
+        padding: 1rem;
+    }
+    .btn-remove,
+    .btn-check,
+    .btn-check.checked{
+        font-size: 1.5rem;
+    }
 }

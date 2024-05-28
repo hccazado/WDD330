@@ -1,14 +1,22 @@
 import { CountryServices } from "./countryServices.mjs";
+import { displayFavorites } from "./favorites.mjs";
 import { Show } from "./show.mjs";
 
 const resultsContainer = document.querySelector("#results-container");
 const countrySelect = document.querySelector("#countries");
 const searchOptions = document.querySelector("#search-options");
 const btnSearch = document.querySelector("#btn-search");
+const searchContainer = document.querySelector(".search");
+const btnFavorites = document.querySelector("#btn-favorites");
+const btnHome = document.querySelector("#btn-home");
 
 searchOptions.addEventListener("change", optionSelection);
 
 btnSearch.addEventListener("click", handleSearch);
+
+btnFavorites.addEventListener("click", handleFavoritesBtn);
+
+btnHome.addEventListener("click", handleHomeBtn);
 
 function optionSelection(event){
     const option = event.target.value;
@@ -52,4 +60,14 @@ function handleSearch(e){
         const shows = new Show(imdb, title, "show", country, option, resultsContainer);
         shows.init();  
     }
+}
+
+function handleFavoritesBtn(e){
+    searchContainer.style.display = "none";
+    displayFavorites(resultsContainer);
+}
+
+function handleHomeBtn(e){
+    searchContainer.style.display = "block";
+    resultsContainer.innerHTML = "";
 }
