@@ -1,6 +1,7 @@
 import { getShowById, getShowsByTitle } from "./DAOServices.mjs";
-import { addToFavorites } from "./favorites.mjs";
+import { addToFavorites, getImdbIdSubstring } from "./favorites.mjs";
 import { getStorage } from "./storage.mjs";
+import { displayInfo } from "./showDetail.mjs";
 
 export class Show{
     constructor(id = null, title = null, type = "show", country, searchOption, container){
@@ -14,12 +15,10 @@ export class Show{
 
     async init(){
         if(this.searchOption == "imdbId"){
-            console.log("show by id: "+this.id);
             this.list = await getShowById(this.id); 
             this.renderShows();
         }
         else{
-            console.log("show by title: "+this.title);
             this.list = await getShowsByTitle(this.country, this.title);
             this.renderShows();
         }
@@ -28,7 +27,7 @@ export class Show{
     renderShows(){
         this.container.innerHTML = "";
         if(this.searchOption == "imdbId"){
-            this.container.insertAdjacentHTML("afterbegin", template(show));
+            this.container.insertAdjacentHTML("afterbegin", template(this.list));
         }
         else{
             this.list.forEach(show =>{
@@ -36,6 +35,7 @@ export class Show{
             })
         }
         setFavoriteEventListener();
+        setDisplayInfoListener();
     }
 }
 
@@ -76,12 +76,25 @@ function setFavoriteEventListener(){
     });
 }
 
+function setDisplayInfoListener(){
+    const showsList = document.querySelectorAll(".show-card");
+    showsList.forEach(show =>{
+        show.addEventListener("click", handleDisplayInfo);
+    });
+}
+
+function handleDisplayInfo(e){
+    const id = getImdbIdSubstring(e.target.id);
+    displayInfo(id);
+}
+
 const template = (show) =>{
     return `<div class="show-card">
             <img src="${show.imageSet.verticalPoster.w360}" alt="poster from ${show.originalTitle}">
             <h3>${show.originalTitle}</h3>
             <p>IMDB: ${show.imdbId}</p>
             <p>Genres: ${getGenres(show.genres)}</p>
+            <div id="sh-${show.imdbId}" class="btn-info"></div>
             <div id="${show.imdbId}" class="btn-favorite ${checkFavorite(show.imdbId)}">Favorite: </div>
         </div>`;
 }

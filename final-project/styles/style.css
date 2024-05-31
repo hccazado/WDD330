@@ -188,6 +188,7 @@ nav a:hover{
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    cursor: pointer;
 }
 
 .btn-favorite::after{
@@ -204,6 +205,7 @@ nav a:hover{
     position: absolute;
     bottom: 0.5rem;
     right: 1rem;
+    cursor: pointer;
 }
 
 .btn-check{
@@ -211,6 +213,7 @@ nav a:hover{
     position: absolute;
     bottom: 0.5rem;
     right: 5rem;
+    cursor: pointer;
 }
 
 .btn-remove::before{
@@ -224,6 +227,19 @@ nav a:hover{
     content: "✅";
 }
 
+.btn-info{
+    position: absolute;
+    bottom: .5rem;
+    left: 1rem;
+    font-size: 1.2rem;
+}
+.btn-info::before{
+    content:"🔎";
+}
+.btn-info:hover{
+    cursor: pointer;
+}
+
 .service-card{
     background-color: var(--secondary-color);
     color: var(--primary-accent);
@@ -233,7 +249,7 @@ nav a:hover{
 .service-card img{
     width: 100%;
     height: 200px;
-    object-fit:cover;
+    object-fit: fit;
 }
 .service-card h3{
     font-size: 2rem;
@@ -254,6 +270,32 @@ nav a:hover{
     text-decoration-color: var(--secondary-accent);
     box-shadow: 0 0px 5px 5px var(--complement-color);
     transition: all .2s linear;
+}
+#show-info{
+    display: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-accent);
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+    position: relative;
+}
+
+#show-info a{
+    color: var(--primary-accent);
+    text-decoration: none;
+}
+#show-info a:hover{
+    text-decoration: underline;
+}
+#show-info h3{
+    text-align: center;
+}
+#show-info img{
+    margin: 2rem auto;
+}
+#show-info p{
+    margin: 1rem auto;
 }
 .favorite{
     position: absolute;

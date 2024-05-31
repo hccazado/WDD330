@@ -1,3 +1,4 @@
+import { displayAlert } from "./alert.mjs";
 import { CountryServices } from "./countryServices.mjs";
 import { displayFavorites } from "./favorites.mjs";
 import { Show } from "./show.mjs";
@@ -49,16 +50,37 @@ function optionSelection(event){
 function handleSearch(){
     const option = searchOptions.value;
     const country = countrySelect.value;
+    const imdb = document.querySelector("#imdb").value;
+    const title = document.querySelector("#title").value;
 
     if (option == "streamings"){
-        const countryServices = new CountryServices(country, resultsContainer);
-        countryServices.init();
+        if(country == "all"){
+            displayAlert("A country must be selected!");
+        }
+        else{
+            const countryServices = new CountryServices(country, resultsContainer);
+            countryServices.init();
+        }
     }
-    else if(option == "imdbId" || option == "title"){
-        let imdb = document.querySelector("#imdb").value;
-        let title = document.querySelector("#title").value;
-        const shows = new Show(imdb, title, "show", country, option, resultsContainer);
-        shows.init();  
+    else if(option == "imdbId"){
+        
+        if(imdb == ""){
+            displayAlert("A ImdbId must be informed!");
+        }
+        else{
+            const shows = new Show(imdb, title, "show", country, option, resultsContainer);
+            shows.init();  
+        }
+    }
+    else if(option == "title"){
+        
+        if (title == ""){
+            displayAlert("A title must be informed!");
+        }
+        else{
+            const shows = new Show(imdb, title, "show", country, option, resultsContainer);
+            shows.init();  
+        }
     }
 }
 

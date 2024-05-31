@@ -55,7 +55,7 @@ export function displayFavorites(container){
     setHandleCheckFavorite();
 }
 
-function getImdbIdSubstring(substring){
+export function getImdbIdSubstring(substring){
     let values = String(substring).split("-");
     return values[1];
 }
