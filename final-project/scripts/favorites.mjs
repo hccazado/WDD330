@@ -48,6 +48,9 @@ async function favoriteData(imdbId){
 export function displayFavorites(container){
     const favList = getStorage("favorites");
     container.innerHTML = "";
+    if(favList.length == 0){
+        container.innerHTML = "Sorry, you don't have any show here"
+    }
     favList.forEach(favorite =>{
         container.insertAdjacentHTML("beforeend",template(favorite));
     });

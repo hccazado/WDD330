@@ -68,16 +68,18 @@ function handleSearch(){
             displayAlert("A ImdbId must be informed!");
         }
         else{
+            resultsContainer.innerHTML = "";
             const shows = new Show(imdb, title, "show", country, option, resultsContainer);
             shows.init();  
         }
     }
     else if(option == "title"){
         
-        if (title == ""){
-            displayAlert("A title must be informed!");
+        if (title == "" || country == "all"){
+            displayAlert("A title must be informed and a country choose!");
         }
         else{
+            resultsContainer.innerHTML = "";
             const shows = new Show(imdb, title, "show", country, option, resultsContainer);
             shows.init();  
         }

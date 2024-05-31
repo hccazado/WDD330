@@ -79,7 +79,7 @@ function setFavoriteEventListener(){
 function setDisplayInfoListener(){
     const showsList = document.querySelectorAll(".show-card");
     showsList.forEach(show =>{
-        show.addEventListener("click", handleDisplayInfo);
+        show.lastElementChild.previousElementSibling.addEventListener("click", handleDisplayInfo);
     });
 }
 

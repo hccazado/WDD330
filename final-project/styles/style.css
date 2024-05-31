@@ -229,9 +229,8 @@ nav a:hover{
 
 .btn-info{
     position: absolute;
-    bottom: .5rem;
-    left: 1rem;
-    font-size: 1.2rem;
+    bottom: 1rem;
+    right: 11rem;
 }
 .btn-info::before{
     content:"🔎";
@@ -290,12 +289,14 @@ nav a:hover{
 }
 #show-info h3{
     text-align: center;
+    font-size: 1.6rem;
 }
 #show-info img{
     margin: 2rem auto;
 }
 #show-info p{
     margin: 1rem auto;
+    font-size: 1.3rem;
 }
 .favorite{
     position: absolute;

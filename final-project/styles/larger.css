@@ -77,6 +77,10 @@
         font-size: 1.5rem;
     }
 
+    .btn-info{
+        left: 1rem;
+    }
+
     .alert{
         width: 800px;
     }

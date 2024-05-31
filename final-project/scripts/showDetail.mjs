@@ -28,7 +28,6 @@ export async function displayInfo(imdbId){
 function getLanguages(streamings){
     const selectedCountry = document.querySelector("#countries").value.toLowerCase();
     let languages = [];
-    console.log(selectedCountry)
     if (selectedCountry != "all"){
         streamings[selectedCountry].forEach(streaming=>{
             if(streaming.type == "addon" || streaming.type == "subscription"){
@@ -39,7 +38,7 @@ function getLanguages(streamings){
                 });
             };
         });
-        let languagesString = languages.toString();
+        let languagesString = languages.toString().split(",").join("; ");
         return languagesString;
     }
     else{
@@ -53,7 +52,7 @@ function getLinks(streamings){
     if (selectedCountry != "all"){
         streamings[selectedCountry].forEach(streaming=>{
             if(streaming.type == "addon" || streaming.type == "subscription"){
-                liLinks += `<a href="${streaming.link}" target="_blank">${streaming.service.name}</a>`;
+                liLinks += `<a href="${streaming.link}" target="_blank">${streaming.service.name}</a>; `;
             }
         });
         return liLinks;
@@ -70,7 +69,7 @@ function template(show){
         <img src="${show.imageSet.verticalPoster.w480}" alt="poster from ${show.originalTitle}">
         <p><strong>Overview: </strong>${show.overview}</p>
         <P><strong>Languages: </strong>${getLanguages(show.streamingOptions)}</p>
-        <p><strong>Links: ${getLinks(show.streamingOptions)}</strong></p>
+        <p><strong>Links: </strong>${getLinks(show.streamingOptions)}</p>
     `;
 
 }
