@@ -31,6 +31,7 @@ function optionSelection(event){
     if (option == "imdbId"){
         divImdb.classList.remove("hide");
         divTitle.classList.add("hide");
+        document.querySelector("#imdb").required = true;
         document.querySelector("#btn-search").removeAttribute("disabled");
     }
 
@@ -41,6 +42,7 @@ function optionSelection(event){
         if(!divTitle.classList.contains("hide")){
             divTitle.classList.add("hide");
         }
+        countrySelect.required = true;
         countrySelect.addEventListener("change", (e)=>{
             document.querySelector("#btn-search").removeAttribute("disabled");
         })

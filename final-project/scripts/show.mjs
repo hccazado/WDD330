@@ -94,7 +94,7 @@ const template = (show) =>{
             <h3>${show.originalTitle}</h3>
             <p>IMDB: ${show.imdbId}</p>
             <p>Genres: ${getGenres(show.genres)}</p>
-            <div id="sh-${show.imdbId}" class="btn-info"></div>
+            <div id="sh-${show.imdbId}" class="btn-info">Info: </div>
             <div id="${show.imdbId}" class="btn-favorite ${checkFavorite(show.imdbId)}">Favorite: </div>
         </div>`;
 }

@@ -35,8 +35,8 @@
 </nav>
 <div class="search">
     <label for="search-options">Search options:</label>
-    <select id="search-options" name="search-options">
-        <option disabled selected>Select an option</option>
+    <select id="search-options" name="search-options" required>
+        <option value="" disabled selected>Select an option</option>
         <option value="streamings">Avaliable services in Country</option>
         <option value="title">Shows by title</option>
         <option value="imdbId">Show by IMDB ID</option>
@@ -113,7 +113,7 @@
     </div>
     <div class="search-imdb hide">
         <label for="imdbId">IMDB ID</label>
-        <input type="text" id="imdb" name="imdb" placeholder="tt1375666">
+        <input type="text" id="imdb" name="imdb" placeholder="tt1375666" pattern="^tt[0-9]{7}">
 
     </div>
     <button id="btn-search" disabled>Search</button>

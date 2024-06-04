@@ -63,6 +63,19 @@
     .btn-favorite{
         font-size: 2rem;
     }
+    #show-info{
+        display: none;
+        background-color: var(--secondary-color);
+        color: var(--primary-accent);
+        position: relative;
+        width: 100%;
+        padding: 1rem;
+        position: relative;
+    }
+    #show-info img{
+        margin: 2rem auto;
+        width: 340px;
+    }
     .favorite-card{
         width: 260px;
         height: 600px;
@@ -70,6 +83,9 @@
         color: var(--secondary-accent);
         position: relative;
         padding: 1rem;
+    }
+    .favorite-card h3{
+        font-size: 2rem;
     }
     .btn-remove,
     .btn-check,

@@ -20,8 +20,8 @@ export class CountryServices{
 }
 
 const template = (service) =>{
-    return `<a target="_blank" href="${service.homePage}">
-        <div class="service-card">
+    return `<a target="_blank" class="service-card" href="${service.homePage}">
+        <div >
             <img src="${service.imageSet.darkThemeImage}" alt="logo from ${service.name}">
             <h3>${service.name}</h3>
         </div>
