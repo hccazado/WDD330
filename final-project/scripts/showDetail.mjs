@@ -28,38 +28,48 @@ export async function displayInfo(imdbId){
 function getLanguages(streamings){
     const selectedCountry = document.querySelector("#countries").value.toLowerCase();
     let languages = [];
-    if (selectedCountry != "all"){
-        streamings[selectedCountry].forEach(streaming=>{
-            if(streaming.type == "addon" || streaming.type == "subscription"){
-                streaming.audios.forEach(language=>{
-                    if(languages.indexOf(language.language) == -1){
-                        languages.push(language.language);
-                    }
-                });
-            };
-        });
-        let languagesString = languages.toString().split(",").join("; ");
-        return languagesString;
-    }
-    else{
+    if (selectedCountry == "all"){
         return "A country must be selected";
     }
+    else{
+        if (streamings[selectedCountry] != null || streamings[selectedCountry] != undefined){
+            streamings[selectedCountry].forEach(streaming=>{
+                if(streaming.type == "addon" || streaming.type == "subscription"){
+                    streaming.audios.forEach(language=>{
+                        if(languages.indexOf(language.language) == -1){
+                            languages.push(language.language);
+                        }
+                    });
+                };
+            });
+            let languagesString = languages.toString().split(",").join("; ");
+            return languagesString;
+        }
+        else{
+            return "Languages not available.";
+        }
+    }  
 }
 
 function getLinks(streamings){
     const selectedCountry = document.querySelector("#countries").value.toLowerCase();
     let liLinks = "";
-    if (selectedCountry != "all"){
-        streamings[selectedCountry].forEach(streaming=>{
-            if(streaming.type == "addon" || streaming.type == "subscription"){
-                liLinks += `<a href="${streaming.link}" target="_blank">${streaming.service.name}</a>; `;
-            }
-        });
-        return liLinks;
-    }
-    else{
+    if (selectedCountry == "all"){
         return "A country must be selected";
     }
+    else{
+        if(streamings[selectedCountry] == null || streamings[selectedCountry] == undefined){
+            return "Streamings not available."
+        }
+        else{
+            streamings[selectedCountry].forEach(streaming=>{
+                if(streaming.type == "addon" || streaming.type == "subscription"){
+                    liLinks += `<a href="${streaming.link}" target="_blank">${streaming.service.name}</a>; `;
+                }
+            });
+            return liLinks; 
+            }
+        }
 
 }
 

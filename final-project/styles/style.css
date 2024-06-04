@@ -19,6 +19,9 @@ body{
     width: 900px;
     max-width: 100%;
     margin: 0 auto;
+}
+
+body, p, div, a, nav, li{
     font-family: "Ubuntu Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -132,6 +135,7 @@ nav a:hover{
     width: 90%;
     height: auto;
     background-color: var(--secondary-color);
+    border-radius: .5rem;
     color: var(--secondary-accent);
     position: relative;
     padding: 1rem;
@@ -157,6 +161,7 @@ nav a:hover{
     width: 380px;
     height: 800px;
     background-color: var(--secondary-color);
+    border-radius: .5rem;
     color: var(--secondary-accent);
     position: relative;
     padding: 1rem;
@@ -176,7 +181,7 @@ nav a:hover{
 .show-card p{
     font-size: 1.5rem;
     text-align: left;
-    font-weight: 600;
+    font-weight: 500;
 }
 .show-card div{
     font-size: 1.3rem;
@@ -241,6 +246,7 @@ nav a:hover{
 
 .service-card{
     background-color: var(--secondary-color);
+    border-radius: .5rem;
     color: var(--primary-accent);
     padding: .5rem;
     text-align: center;
@@ -280,6 +286,8 @@ nav a:hover{
     width: 382px;
     padding: 1rem;
     position: relative;
+    border-radius: .5rem;
+    margin: 2rem 0;
 }
 
 #show-info a{
@@ -320,6 +328,7 @@ nav a:hover{
     width: 100%;
     max-width: 450px;
     height: 42px;
+    border-radius: .5rem;
 }
 
 .search button{
