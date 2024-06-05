@@ -26,6 +26,8 @@ function optionSelection(event){
     if (option == "title"){
         divTitle.classList.remove("hide");
         divImdb.classList.add("hide");
+        document.querySelector("#title").required = true;
+        document.querySelector("#countries").required = true;
         document.querySelector("#btn-search").removeAttribute("disabled");
     }
     if (option == "imdbId"){

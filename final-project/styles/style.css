@@ -344,7 +344,8 @@ nav a:hover{
 
 select:required:has(option[value=""]:checked),
 select:required:has(option[value="all"]:checked),
-#imdb:required:invalid{
+#imdb:required:invalid,
+#title:required:invalid{
     border-bottom: 2px solid #f56;
 }
 
